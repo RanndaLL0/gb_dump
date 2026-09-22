@@ -12,21 +12,29 @@ class Chip8 {
 
   public:
     uint8_t registers[16]{};
-    uint8_t memory[4096]{};
+    uint8_t memory[MEMORY_SIZE]{};
     uint16_t index{};
     uint16_t pc{};
-    uint16_t stack[16];
+    uint16_t stack[STACK_LEVELS];
     uint8_t sp{};
     uint8_t delayTimer{};
     uint8_t soundTimer{};
-    uint8_t keypad[16]{};
-    uint32_t video[64 * 32]{};
-    uint16_t opcode;
+    uint8_t keypad[KEY_COUNT]{};
+    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
+    uint16_t opcode{};
+
+  void Table0(); 
+  void Table8(); 
+  void TableE(); 
+  void TableF();
+  void Cycle();
 
   /*
    *  A tabela de operações fica na referencia técnica do Cowgod
    *  As funções foram nomeadas de maneira simliar com o que ele define na referencia técnica, as operações em si são bem faceis de ler (a maioria pelo menos)
    * */
+
+  void OP_NULL();
 
   // CLS
   void OP_00E0(); 
@@ -130,9 +138,16 @@ class Chip8 {
   // LD Vx, [I] 
   void OP_Fx65();
 
-    Chip8();
-    void LoadROM(char const *filename); 
+  Chip8();
+  void LoadROM(char const *filename); 
 
-    std::default_random_engine randGen;
-	  std::uniform_int_distribution<uint8_t> randByte;
+  std::default_random_engine randGen;
+	std::uniform_int_distribution<uint8_t> randByte;
+
+  typedef void (Chip8::*Chip8Func)();
+  Chip8Func table[0xF + 1]; 
+  Chip8Func table0[0xE + 1]; 
+  Chip8Func table8[0xE + 1]; 
+  Chip8Func tableE[0xE + 1]; 
+  Chip8Func tableF[0x65 + 1];
 };

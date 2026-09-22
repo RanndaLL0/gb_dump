@@ -1,7 +1,8 @@
 ANTES DE QUALQUER COISA!
 
 O texto abaixo não é uma documentação técnica de nada, nem do projeto e nem do processador, são anotações minhas enquanto estudava pela refencia técnica do Cowgod.
-Pode acabar servindo como referência e pode acabar sendo pertinente também para tirar duvidas sobre a implementação.
+Pode acabar servindo como referência e pode acabar sendo pertinente também para tirar duvidas sobre a implementação. A interface gráfica foi gerada com IA, sinceramente
+não faço ideia de como funciona, somente que a mesma esta utilizando o buffer de video da CPU.
 
 (Link para a referencia)
 https://devernay-free-fr.translate.goog/hacks/chip8/C8TECH10.HTM?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc&_x_tr_sch=http#2nnn
